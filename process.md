@@ -83,5 +83,6 @@ npm run dev # or yarn or pnpm
 - `useMemo` => `createMemo` > no need dependencies for createMemo
 - `onChange` => `onKeyUp`
 - `e.target.value` => `e.currentTarget.value`
-- instead of `map`, we use `<For></For>` of solid-js. Also no need `key` for that.
+- instead of `map`, we use `<For></For>` on solid-js. Also no need `key` for that.
 - `useState` => `createSignal`
+- `useEffect` => `createResource`

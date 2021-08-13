@@ -13,3 +13,9 @@ export interface HeaderInterface {
   search: () => string;
   onSetSearch: (search: string) => void;
 }
+
+export interface HomePageInterface {
+  products: () => ProductInterface[];
+  onAddToCart: (product: ProductInterface) => void;
+  search: () => string;
+}
