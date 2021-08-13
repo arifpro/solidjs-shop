@@ -1,26 +1,21 @@
-import type { Component } from "solid-js";
-
-import logo from "./logo.svg";
-import styles from "./App.module.css";
+import { Component, createSignal } from "solid-js";
+// import styles from "./App.module.css";
+import { Header } from "./components/Header";
+import { ProductInterface } from "./interface";
 
 const App: Component = () => {
+  const [cart, setCart] = createSignal<ProductInterface[]>([]);
+  const [search, setSearch] = createSignal("");
+
   return (
-    <div class={styles.App}>
-      <header class={styles.header}>
-        <img src={logo} class={styles.logo} alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          class={styles.link}
-          href="https://github.com/solidjs/solid"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Solid
-        </a>
-      </header>
-    </div>
+    <>
+      <Header
+        cart={cart}
+        search={search}
+        onClearCart={() => setCart([])}
+        onSetSearch={(str) => setSearch(str)}
+      />
+    </>
   );
 };
 
