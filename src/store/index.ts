@@ -4,15 +4,18 @@ import { ProductInterface } from "./../interface/index";
 
 // cart
 export const cart = createMutable({
-  products: [] as ProductInterface[],
+//   products: [] as ProductInterface[],
+  products: JSON.parse(window.localStorage.getItem('cart') || '[]') as ProductInterface[],
   get total() {
     return this.products.reduce((acc, p) => acc + p.price, 0);
   },
   addToCart(product: ProductInterface) {
     this.products.push(product);
+    window.localStorage.setItem('cart', JSON.stringify(this.products));
   },
   clearCart() {
     this.products = [];
+    window.localStorage.setItem('cart', JSON.stringify(this.products));
   },
 });
 // export const [cart, setCart] = createSignal<ProductInterface[]>([]);
