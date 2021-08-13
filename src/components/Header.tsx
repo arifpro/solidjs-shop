@@ -1,13 +1,8 @@
 import { Component, createMemo, For } from "solid-js";
 import { Link } from "solid-app-router";
-import { HeaderInterface } from "../interface";
+import { cart, onClearCart, onSetSearch, search } from "../store";
 
-export const Header: Component<HeaderInterface> = ({
-  cart,
-  onClearCart,
-  search,
-  onSetSearch,
-}) => {
+export const Header: Component = () => {
   const total = createMemo(() =>
     cart().reduce((total, p) => total + p.price, 0)
   );
