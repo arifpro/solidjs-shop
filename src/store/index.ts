@@ -1,10 +1,23 @@
 import { createSignal, createResource } from "solid-js";
+import { createMutable } from "solid-js/store";
 import { ProductInterface } from "./../interface/index";
 
 // cart
-export const [cart, setCart] = createSignal<ProductInterface[]>([]);
-export const onAddToCart = (p: ProductInterface) => setCart(cart().concat(p));
-export const onClearCart = () => setCart([]);
+export const cart = createMutable({
+  products: [] as ProductInterface[],
+  get total() {
+    return this.products.reduce((acc, p) => acc + p.price, 0);
+  },
+  addToCart(product: ProductInterface) {
+    this.products.push(product);
+  },
+  clearCart() {
+    this.products = [];
+  },
+});
+// export const [cart, setCart] = createSignal<ProductInterface[]>([]);
+// export const onAddToCart = (p: ProductInterface) => setCart(cart().concat(p));
+// export const onClearCart = () => setCart([]);
 
 // search
 export const [search, setSearch] = createSignal("");

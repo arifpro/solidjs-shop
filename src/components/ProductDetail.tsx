@@ -1,6 +1,6 @@
 import { Component, createMemo } from "solid-js";
 import { useParams } from "solid-app-router";
-import { products, onAddToCart } from "../store";
+import { products, cart } from "../store";
 
 export const ProductDetail: Component = () => {
   const { id } = useParams<{ id: string }>();
@@ -40,7 +40,7 @@ export const ProductDetail: Component = () => {
                   <button
                     onClick={(evt) => {
                       evt.stopPropagation();
-                      onAddToCart(product());
+                      cart.addToCart(product());
                     }}
                     class="text-2xl px-8 py-1 font-bold bg-gray-800 text-white rounded-full"
                   >

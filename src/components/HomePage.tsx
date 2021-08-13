@@ -1,6 +1,6 @@
 import { Component, createMemo, For } from "solid-js";
 import { Link } from "solid-app-router";
-import { onAddToCart, products, search } from "../store";
+import { cart, products, search } from "../store";
 
 export const HomePage: Component = () => {
   const filteredProducts = createMemo(() =>
@@ -49,7 +49,7 @@ export const HomePage: Component = () => {
                   <button
                     onClick={(e) => {
                       e.preventDefault();
-                      onAddToCart(product);
+                      cart.addToCart(product);
                     }}
                     class="text-lg px-8 py-1 font-bold bg-gray-800 text-white rounded-full"
                   >
