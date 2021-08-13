@@ -9,12 +9,15 @@ export const Header: Component = () => {
 
   return (
     <div class="bg-gray-600 text-white flex flex-row w-full py-2 rounded-b-xl">
+      {/* logo */}
       <div class="text-2xl px-10 py-2">
         <Link href="/">
           <i class="fas fa-store-alt mr-2"></i>
           SolidJS-Shop
         </Link>
       </div>
+      
+      {/* search box */}
       <div class="flex-grow">
         <input
           type="text"
@@ -23,6 +26,8 @@ export const Header: Component = () => {
           class="p-1 my-2 text-xl bg-white text-black rounded-lg max-w-md w-96"
         />
       </div>
+
+      {/* cart */}
       <div class="px-10 py-2 justify-end has-tooltip">
         <span class="tooltip cart">
           <div>Cart ({cart().length})</div>

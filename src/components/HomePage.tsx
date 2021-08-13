@@ -20,7 +20,7 @@ export const HomePage: Component = () => {
       <For each={filteredProducts()}>
         {(product) => (
           <Link
-            href={`/detail/${product.id}`}
+            href={`/product/${product.id}`}
             class="m-2 border border-1 border-gray-600 rounded-t-lg bg-gray-600"
           >
             <h3 class="title font-bold truncate w-full max-w-full py-2 px-4 text-white">
@@ -37,7 +37,9 @@ export const HomePage: Component = () => {
                     : product.description}
                 </div>
                 <div class="flex flex-row mt-2">
-                  <div class="text-md mt-1 font-bold text-gray-600">{product.category}</div>
+                  <div class="text-md mt-1 font-bold text-gray-600">
+                    {product.category}
+                  </div>
                   <div class="text-lg text-right flex-grow justify-end mt-1 mr-4 font-bold">
                     {product.price.toLocaleString("en-US", {
                       style: "currency",
