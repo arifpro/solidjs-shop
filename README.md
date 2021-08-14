@@ -1,4 +1,4 @@
-# SolidJS-Shop
+# [SolidJS-Shop](https://solidjs-shop.netlify.app)
 
 ## create project by JavaScript template
 
