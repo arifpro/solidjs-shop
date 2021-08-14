@@ -1,35 +1,96 @@
 # SolidJS-Shop
 
-## Usage
+## create project by JavaScript template
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.js.org/) via `pnpm up -Lri`.
-
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
-
-```bash
-$ npm install # or pnpm install or yarn install
+```sh
+npx degit solidjs/templates/js my-app
+cd my-app
+npm i # or yarn or pnpm
+npm run dev # or yarn or pnpm
 ```
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
 
-## Available Scripts
+## create project by TypeScript template
 
-In the project directory, you can run:
+```sh
+npx degit solidjs/templates/ts my-app
+cd my-app
+npm i # or yarn or pnpm
+npm run dev # or yarn or pnpm
+```
 
-### `npm dev` or `npm start`
+## install plugin
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **`solid-app-router:`** [https://github.com/solidjs/solid-app-router](https://github.com/solidjs/solid-app-router)
 
-The page will reload if you make edits.<br>
+    ```sh
+    npm i solid-app-router
+    ```
 
-### `npm run build`
+- **`tailwindcss:`** [https://dev.to/wobsoriano/install-tailwind-css-in-solid-and-vite-jfl](https://dev.to/wobsoriano/install-tailwind-css-in-solid-and-vite-jfl)
 
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
+    ```sh
+    npm i -D tailwindcss@latest postcss@latest autoprefixer@latest
+    ```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+    Next, generate `tailwind.config.js` and `postcss.config.js` files by this command:
+
+    ```sh
+    npx tailwindcss init -p
+    ```
+
+    Open the `tailwind.config.js` file and update the `purge` property to include the path to our `src` folder and `index.html` file.
+
+    ```js
+    module.exports = {
+        purge: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+        darkMode: false, // or 'media' or 'class'
+        theme: {
+            extend: {},
+        },
+        variants: {
+            extend: {},
+        },
+        plugins: [],
+    }
+    ```
+
+    Next, we’ll import Tailwind’s styles using the `@tailwind` directive within our entry CSS file:
+
+    ```ts
+    /* ./src/index.css */
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+    ```
+
+    Finally, ensure your CSS file is being imported in your `./src/index.js` or `./src/index.ts` file:
+
+    ```ts
+    import { render } from "solid-js/web";
+
+    import "./index.css";
+    import App from "./App";
+
+    render(() => <App />, document.getElementById("root"));
+    ```
+
+- Or we can use **`Vite + Solid + Tailwind CSS starter:`** [https://github.com/wobsoriano/vite-solid-tailwind-starter](https://github.com/wobsoriano/vite-solid-tailwind-starter)
+
+
+## changes
+
+- `FunctionComponent` => `Component`
+- `useMemo` => `createMemo` > no need dependencies for createMemo
+- `onChange` => `onKeyUp`
+- `e.target.value` => `e.currentTarget.value`
+- instead of `map`, we use `<For></For>` on solid-js. Also no need `key` for that.
+- `useState` => `createSignal`
+- `useEffect` => `createResource`
 
 ## Deployment
 
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+```sh
+npm run deploy
+```
+
+We can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
