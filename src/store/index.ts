@@ -28,6 +28,6 @@ export const onSetSearch = (s: string) => setSearch(s);
 
 // products
 export const [products] = createResource<ProductInterface[]>(
-  () => fetch("http://fakestoreapi.com/products").then((res) => res.json()),
+  () => fetch("https://fakestoreapi.com/products").then((res) => res.json()),
   { initialValue: [] }
 );
